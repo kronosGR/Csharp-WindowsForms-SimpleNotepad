@@ -14,7 +14,13 @@ namespace SimpleNotepad
     {
         string Filename;
 
-        void DoSave(string filename)
+        string LastFindWord;
+        bool LastFindDown;
+        bool LastFindMatchCase;
+
+        frmFind find = null;
+
+       void DoSave(string filename)
         {
             Filename = filename;
             textBox.SaveFile(filename);
@@ -82,6 +88,36 @@ namespace SimpleNotepad
             } else
             {
                 DoSave(Filename);
+            }
+        }
+
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            find = new frmFind();
+            find.Show(this);
+        }
+
+        private void findNextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMain parent_form = (frmMain)Owner;
+            parent_form.DoFind( find.textFindWhat.Text, find.rdoDown.Checked, find.chkMatchCase.Checked);
+        }
+
+        public void DoFind(string search, bool down, bool match_case)
+        {
+            LastFindWord = search;
+            LastFindDown = down;
+            LastFindMatchCase = match_case;
+
+            if (down)
+            {
+                if (match_case)
+                {
+                    textBox.Find(search, textBox.SelectionStart + 1, RichTextBoxFinds.MatchCase);
+                } else
+                {
+                    textBox.Find(search, textBox.SelectionStart + 1, RichTextBoxFinds.None);
+                }
             }
         }
     }

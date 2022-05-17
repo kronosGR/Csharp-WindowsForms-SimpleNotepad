@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 232);
+            this.ClientSize = new System.Drawing.Size(434, 164);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkMatchCase);
             this.Controls.Add(this.textFindWhat);
@@ -144,10 +144,10 @@
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textFindWhat;
-        private System.Windows.Forms.CheckBox chkMatchCase;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rdoUp;
-        private System.Windows.Forms.RadioButton rdoDown;
+        public System.Windows.Forms.TextBox textFindWhat;
+        public System.Windows.Forms.CheckBox chkMatchCase;
+        public System.Windows.Forms.RadioButton rdoUp;
+        public System.Windows.Forms.RadioButton rdoDown;
     }
 }
