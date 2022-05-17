@@ -12,6 +12,22 @@ namespace SimpleNotepad
 {
     public partial class frmMain : Form
     {
+        string Filename;
+
+        void DoSave(string filename)
+        {
+            Filename = filename;
+            textBox.SaveFile(filename);
+        }
+
+        void DoSaveAs()
+        {
+            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                DoSave(saveFileDialog1.FileName);
+            }
+        }
+
         public frmMain()
         {
             InitializeComponent();
@@ -55,6 +71,17 @@ namespace SimpleNotepad
                 {
                     textBox.LoadFile(openFileDialog1.FileName);
                 }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Filename))
+            {
+                DoSaveAs();
+            } else
+            {
+                DoSave(Filename);
             }
         }
     }
