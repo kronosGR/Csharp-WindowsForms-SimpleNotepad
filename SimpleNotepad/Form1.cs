@@ -41,5 +41,21 @@ namespace SimpleNotepad
         {
             textBox.Clear();
         }
+
+        private bool CheckChanges()
+        {
+            return true;
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckChanges())
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    textBox.LoadFile(openFileDialog1.FileName);
+                }
+            }
+        }
     }
 }
